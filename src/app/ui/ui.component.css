@@ -6,7 +6,7 @@
   }
   
   .calculator {
-    width: 180px;
+    width: 200px;
     text-align: center;
     padding: 15px;
     background-color: #d3d3d3;
@@ -76,6 +76,10 @@
     margin-top: 10px;
   }
   
+  .addition-button {
+    font-weight: bold;
+  }
+
   .operator-button {
     font-weight: bold;
   }
