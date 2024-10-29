@@ -4,6 +4,7 @@ import { substraction } from '../substraction/substraction';
 import { multiplication } from '../multiplication/multiplication';
 import { division } from '../division/division';
 import { exp } from '../exp/exp';
+import { sqrt } from '../sqrt/sqrt';
 
 @Component({
   selector: 'app-ui',
@@ -12,8 +13,8 @@ import { exp } from '../exp/exp';
 })
 export class UiComponent implements OnInit {
   result = 0;
-  operator1: string = ''; // Cambiado a string para permitir múltiples dígitos
-  operator2: string = ''; // Cambiado a string para permitir múltiples dígitos
+  operator1: number = 0; // Cambiado a number
+  operator2: number = 0; // Cambiado a number
   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]; // Botones numéricos
   activeField: 'operator1' | 'operator2' = 'operator1'; // Campo activo
 
@@ -22,41 +23,36 @@ export class UiComponent implements OnInit {
   // Método para agregar un número al operador correspondiente
   appendNumber(num: number) {
     if (this.activeField === 'operator1') {
-      this.operator1 += num.toString(); // Agrega el número al primer operador
+      this.operator1 = this.operator1 * 10 + num; // Agrega el número al primer operador
     } else {
-      this.operator2 += num.toString(); // Agrega el número al segundo operador
+      this.operator2 = this.operator2 * 10 + num; // Agrega el número al segundo operador
     }
   }
 
   addition() {
-    const num1 = Number(this.operator1);
-    const num2 = Number(this.operator2);
-    this.result = addition(num1, num2);
+    this.result = addition(this.operator1, this.operator2);
   }
 
   substraction(){
-    const num1 = Number(this.operator1);
-    const num2 = Number(this.operator2);
-    this.result = substraction(num1, num2);
+    this.result = substraction(this.operator1, this.operator2);
   }
 
   multiplication(){
-    const num1 = Number(this.operator1);
-    const num2 = Number(this.operator2);
-    this.result = multiplication(num1, num2);
+    this.result = multiplication(this.operator1, this.operator2);
   }
 
   division(){
-    const num1 = Number(this.operator1);
-    const num2 = Number(this.operator2);
-    this.result = division(num1, num2);
+    this.result = division(this.operator1, this.operator2);
   }
 
   exponente(){
-    const num1 = Number(this.operator1);
-    const num2 = Number(this.operator2);
-    this.result = exp(num1, num2);
+    this.result = exp(this.operator1, this.operator2);
   }
+
+  raiz(){
+    this.result = sqrt(this.operator1);
+  }
+
   // Métodos para establecer el campo activo
   setActiveField(field: 'operator1' | 'operator2') {
     this.activeField = field;
