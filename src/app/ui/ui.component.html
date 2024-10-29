@@ -1,23 +1,43 @@
-<div class="calculator">
-
-    <form>
+<div class="calculator-container">
+    <div class="calculator">
+      <form>
         <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span> 
-            <input id="operator1" [(ngModel)]="operator1" type="number" class="form-control operator1" name="operator1" placeholder="0.0">
+          <input
+            id="operator1"
+            [(ngModel)]="operator1"
+            type="number"
+            class="form-control operator1"
+            name="operator1"
+            placeholder="0.0"
+            (click)="setActiveField('operator1')"
+          />
         </div>
-
+  
         <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-            <input id="operator2" [(ngModel)]="operator2" type="number" class="form-control operator2" name="operator2" placeholder="0.0">
+          <input
+            id="operator2"
+            [(ngModel)]="operator2"
+            type="number"
+            class="form-control operator2"
+            name="operator2"
+            placeholder="0.0"
+            (click)="setActiveField('operator2')"
+          />
         </div>
-    </form>
-
-    <i class="glyphicon glyphicon-plus addition-button"
-        (click)="addition()"></i>
-
-    <i class="glyphicon glyphicon-minus substraction-button"
-        (click)="substraction()"></i>
-
-</div>
-
-<span class="result">{{ result }}</span>
+      </form>
+  
+      <div class="button-grid">
+        <button *ngFor="let num of numbers" (click)="appendNumber(num)">
+          {{ num }}
+        </button>
+      </div>
+  
+      <div class="button-row">
+        <button class="operator-button" (click)="addition()">+</button>
+        <button class="operator-button" (click)="substraction()">-</button>
+      </div>
+  
+      <span class="result">{{ result }}</span>
+    </div>
+  </div>
+      
