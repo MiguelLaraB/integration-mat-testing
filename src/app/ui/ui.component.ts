@@ -5,6 +5,7 @@ import { multiplication } from '../multiplication/multiplication';
 import { division } from '../division/division';
 import { exp } from '../exp/exp';
 import { sqrt } from '../sqrt/sqrt';
+import { sqr } from '../sqr/sqr';
 
 @Component({
   selector: 'app-ui',
@@ -51,6 +52,10 @@ export class UiComponent implements OnInit {
 
   raiz(){
     this.result = sqrt(this.operator1);
+  }
+
+  exponente2(){
+    this.result = sqr(this.operator1);
   }
 
   // Métodos para establecer el campo activo
